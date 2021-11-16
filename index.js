@@ -24,6 +24,55 @@ client.connect((err) => {
     const productsCollection = client.db("oClock").collection("Products");
     const bookingsCollection = client.db("oClock").collection("bookings");
     const reviewCollection = client.db("oClock").collection("Reviews");
+    const usersCollection = client.db("oClock").collection("users");
+  
+ 
+
+    //user
+  app.post("/users", async (req, res) => {
+    const user=req.body;
+   const result=await usersCollection.insertOne(user);
+   console.log(result);
+   res.json(result);
+
+    res.send(result);
+    console.log(result);
+  });
+ 
+  // app.put("/users", async (req, res) => {
+  //   const email=req.body;
+  //   const filter={
+  //     email:user.email
+  //   };
+  //   options={upsert:true};
+  //   const updateDoc ={$set:user}
+  //   const result=await usersCollection.updateOne(filter, updateDoc,options);
+  //   console.log('put',user);
+  //   res.send(result);
+  //   console.log(result);
+  // });
+  //admin
+app.put("/users/admin", async (req, res) => {
+  const user=req.body;
+  const filter={email:user.email};
+  const updateDoc={$set:{role: 'admin'}}
+  const result=await usersCollection.updateOne(filter, updateDoc);
+  console.log('put',user);
+  res.json(result);
+  // res.send(result);
+  console.log(result);
+});
+app.get("/users/:email", async (req, res) => {
+  const email=req.params.email;
+  const query={email:email}
+  const user = await usersCollection.findOne(query);
+  let isAdmin=false;
+  if(user?.role==='admin'){
+    isAdmin=true;
+  }
+  res.json({admin :isAdmin});
+  
+});
   
     // adding new services
   
@@ -113,7 +162,7 @@ client.connect((err) => {
     });
   });
 
-
+  
 
   
 app.get('/',(req,res)=>{
