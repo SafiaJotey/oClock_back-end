@@ -1,7 +1,7 @@
 # o-Clock
 
-This project was bootstrapped with [o-Clock-client side](https://dream-travel-2022.web.app/).
-This project was bootstrapped with [o-Clock-server side](https://dream-travel-2022.web.app/).
+This project was bootstrapped with [o-Clock-client side](https://oclock-2021.web.app/).
+This project was bootstrapped with [o-Clock-server side](https://morning-sea-41407.herokuapp.com/).
 
 ## Description
 o-Clock, A  Clock Store which is providing  smart watches of well-Known from different Countries to people. From the website, User can know details about o-Clock and their products.
