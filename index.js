@@ -129,6 +129,17 @@ app.get("/users/:email", async (req, res) => {
       res.send(result);
       console.log(result);
     });
+    //delete product
+    app.delete("/deleteProduct/:id", async (req, res) => {
+      console.log(req.params.id)
+;
+      const result = await productsCollection.deleteOne({
+        _id: ObjectId(req.params.id),
+      });
+      console.log(result);
+      res.send(result);
+     
+    });
   
     //delete order
   
