@@ -69,7 +69,9 @@ app.get("/users/:email", async (req, res) => {
   let isAdmin=false;
   if(user?.role==='admin'){
     isAdmin=true;
+    
   }
+  console.log(isAdmin)
   res.json({admin :isAdmin});
   
 });
