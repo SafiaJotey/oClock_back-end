@@ -169,7 +169,7 @@ client.connect((err) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Running dream Travel');
+  res.send('Running oClock');
 });
 
 app.listen(port, () => {
