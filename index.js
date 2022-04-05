@@ -146,8 +146,12 @@ client.connect((err) => {
   });
   app.post('/addBestProducts', async (req, res) => {
     const product = req.body;
-    // console.log(service);
+    console.log(bestProductCollection);
     const result = await bestProductCollection.insertOne(product);
+    res.send(result);
+  });
+  app.get('/getBestProducts', async (req, res) => {
+    const result = await bestProductCollection.find({}).toArray();
     res.send(result);
   });
 
